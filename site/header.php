@@ -75,7 +75,7 @@
 
 
   <!-- Navbar Start -->
-  <div class="container-fluid mb-5">
+  <!-- <div class="container-fluid mb-5">
       <div class="row border-top px-xl-5">
           <div class="col-lg-3 d-none d-lg-block">
               <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
@@ -99,7 +99,7 @@
                       <a href="" class="nav-item nav-link">Shoes</a>
                   </div>
               </nav>
-          </div>
+          </div> -->
           <div class="col-lg-9">
               <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                   <a href="" class="text-decoration-none d-block d-lg-none">
