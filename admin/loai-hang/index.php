@@ -15,7 +15,8 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
     #lấy dữ liệu từ form
-
+    
+    $ten_loai = $_POST["name"];
     //insert vào db
     loai_insert($ten_loai);
 

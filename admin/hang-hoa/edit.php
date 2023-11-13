@@ -35,13 +35,13 @@ if (is_file($img_path)) {
                             </select>
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="ten_hh" class="form-label">Tên hàng hóa</label>
-                            <input type="text" name="ten_hh" id="ten_hh" class="form-control" required
+                            <label for="name" class="form-label">Tên hàng hóa</label>
+                            <input type="text" name="name" id="name" class="form-control" required
                                 value="<?= $ten_hh ?>">
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="ma_hh" class="form-label">Mã hàng hóa</label>
-                            <input type="text" name="ma_hh" id="ma_hh" readonly class="form-control"
+                            <label for="productId" class="form-label">Mã hàng hóa</label>
+                            <input type="text" name="productId" id="productId" readonly class="form-control"
                                 value="<?= $ma_hh ?>">
                         </div>
                     </div>
@@ -50,7 +50,7 @@ if (is_file($img_path)) {
                             <div class="row align-items-center">
                                 <div class="col-sm-8">
                                     <label for="up_hinh" class="form-label">Ảnh sản phẩm</label>
-                                    <input type="hidden" name="hinh" id="hinh" class="form-control"
+                                    <input type="hidden" name="img" id="img" class="form-control"
                                         value="<?= $hinh ?>">
                                     <input type="file" name="up_hinh" id="up_hinh" class="form-control">
                                 </div>
@@ -61,12 +61,12 @@ if (is_file($img_path)) {
                             </div>
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="don_gia" class="form-label">Đơn giá (vnđ)</label>
-                            <input type="text" name="don_gia" id="don_gia" class="form-control" value="<?= $don_gia ?>">
+                            <label for="price" class="form-label">Đơn giá (vnđ)</label>
+                            <input type="text" name="price" id="price" class="form-control" value="<?= $don_gia ?>">
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="giam_gia" class="form-label">Giảm giá (vnđ)</label>
-                            <input type="text" name="giam_gia" id="giam_gia" class="form-control" required
+                            <label for="sale" class="form-label">Giảm giá (vnđ)</label>
+                            <input type="text" name="sale" id="sale" class="form-control" required
                                 value="<?= $giam_gia ?>">
                         </div>
                     </div>
@@ -79,7 +79,7 @@ if (is_file($img_path)) {
                             <label>Hàng đặc biệt?</label>
                             <div class="form-control">
                                 <label class="radio-inline  mr-3">
-                                    <input type="radio" value="1" name="dac_biet" <?= $dac_biet ? 'checked' : '' ?>>Đặc
+                                    <input type="radio" value="1" name="special" <?= $dac_biet ? 'checked' : '' ?>>Đặc
                                     biệt
                                 </label>
                                 <label class="radio-inline">
@@ -89,20 +89,20 @@ if (is_file($img_path)) {
                             </div>
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="ngay_nhap" class="form-label">Ngày nhập</label>
-                            <input type="date" name="ngay_nhap" id="ngay_nhap" class="form-control" required
+                            <label for="date" class="form-label">Ngày nhập</label>
+                            <input type="date" name="date" id="date" class="form-control" required
                                 value="<?= $ngay_nhap ?>">
                         </div>
                         <div class="form-group col-sm-4">
-                            <label for="so_luot_xem" class="form-label">Số lượt xem</label>
-                            <input type="text" name="so_luot_xem" id="so_luot_xem" readonly class="form-control"
+                            <label for="view" class="form-label">Số lượt xem</label>
+                            <input type="text" name="view" id="view" readonly class="form-control"
                                 required value="<?= $so_luot_xem ?>">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-12">
-                            <label for="mo_ta" class="form-label">Mô tả sản phẩm</label>
-                            <textarea id="txtarea" spellcheck="false" name="mo_ta"
+                            <label for="describ" class="form-label">Mô tả sản phẩm</label>
+                            <textarea id="txtarea" spellcheck="false" name="describ"
                                 class="form-control form-control-lg mb-3" id="textareaExample"
                                 rows="3"><?= $mo_ta ?></textarea>
                         </div>

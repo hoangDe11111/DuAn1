@@ -11,7 +11,7 @@
                     <div class="mb-3">
                         <label for="ten_loai" class="form-label">Tên loại</label>
                         <input type="text" name="name" placeholder="Nhập tên loại" class="form-control" required
-                            value="<?= $ten_loai ?>">
+                            value="<?= $ten_loai ?>"> 
                     </div>
                     <div class="mb-3 text-center">
                         <input type="hidden" name="categoryId" value="<?= $ma_loai ?>">

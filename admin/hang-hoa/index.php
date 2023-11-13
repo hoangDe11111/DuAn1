@@ -16,27 +16,27 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
     #lấy dữ liệu từ form
-    $ten_hh = $_POST['ten_hh'];
-    $don_gia = $_POST['don_gia'];
-    $giam_gia = $_POST['giam_gia'];
+    $ten_hh = $_POST['name'];
+    $don_gia = $_POST['price'];
+    $giam_gia = $_POST['sale'];
     $ma_loai = $_POST['categoryId'];
-    $dac_biet = $_POST['dac_biet'];
-    $so_luot_xem = $_POST['so_luot_xem'];
-    $mo_ta = $_POST['mo_ta'];
-    $ngay_nhap = $_POST['ngay_nhap'];
+    $dac_biet = $_POST['special'];
+    $so_luot_xem = $_POST['view'];
+    $mo_ta = $_POST['describ'];
+    $ngay_nhap = $_POST['date'];
 
     // $hinh = $_FILES['hinh']['name'];
     // Upload file lên host
-    $hinh = save_file('hinh', "$UPLOAD_URL/products/");
+    $hinh = save_file('img', "$UPLOAD_URL/products/");
     //insert vào db
     hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta);
 
     //show dữ liệu
-    $items = hang_hoa_select_page('ma_hh', 10);
+    $items = hang_hoa_select_page('productId', 10);
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_edit")) {
     #lấy dữ liệu từ form
-    $ma_hh = $_REQUEST['ma_hh'];
+    $ma_hh = $_REQUEST['productId'];
     $hang_hoa_info = hang_hoa_select_by_id($ma_hh);
     extract($hang_hoa_info);
 
@@ -45,33 +45,33 @@ if (exist_param("btn_list")) {
     $VIEW_NAME = "edit.php";
 } else if (exist_param("btn_delete")) {
 
-    $ma_hh = $_REQUEST['ma_hh'];
+    $ma_hh = $_REQUEST['productId'];
     hang_hoa_delete($ma_hh);
     //hiển thị danh sách
 
-    $items = hang_hoa_select_page('ma_hh', 10);
+    $items = hang_hoa_select_page('productId', 10);
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_delete_all")) {
     try {
         // Vừa sửa gì ở đây quên cmnr
-        $arr_ma_hh = $_POST['ma_hh'];
+        $arr_ma_hh = $_POST['productId'];
         hang_hoa_delete($arr_ma_hh);
         $MESSAGE = "Xóa thành công!";
     } catch (Exception $exc) {
         $MESSAGE = "Xóa thất bại!";
     }
-    $items = hang_hoa_select_page('ma_hh', 10);
+    $items = hang_hoa_select_page('productId', 10);
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_update")) {
 
-    $ten_hh = $_POST['ten_hh'];
-    $don_gia = $_POST['don_gia'];
-    $giam_gia = $_POST['giam_gia'];
+    $ten_hh = $_POST['name'];
+    $don_gia = $_POST['price'];
+    $giam_gia = $_POST['sale'];
     $ma_loai = $_POST['categoryId'];
-    $dac_biet = $_POST['dac_biet'];
-    $so_luot_xem = $_POST['so_luot_xem'];
-    $mo_ta = $_POST['mo_ta'];
-    $ngay_nhap = $_POST['ngay_nhap'];
+    $dac_biet = $_POST['special'];
+    $so_luot_xem = $_POST['view'];
+    $mo_ta = $_POST['describ'];
+    $ngay_nhap = $_POST['date'];
 
     $up_hinh = save_file("up_hinh", "$UPLOAD_URL/products/");
     $hinh = strlen($up_hinh) > 0 ? $up_hinh : $hinh;
@@ -80,7 +80,7 @@ if (exist_param("btn_list")) {
     hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta);
     //hiển thị danh sách
 
-    $items = hang_hoa_select_page('ma_hh', 10);
+    $items = hang_hoa_select_page('productId', 10);
     $VIEW_NAME = "list.php";
 } else {
     $loai_hang = loai_select_all('ASC');

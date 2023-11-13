@@ -2,14 +2,14 @@
 require_once 'pdo.php';
 function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta)
 {
-    $sql = "INSERT INTO products(name, price, sale, img, categoryId, special, view, date, describe) VALUES (?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO products(name, price, sale, img, categoryId, special, view, date, describ) VALUES (?,?,?,?,?,?,?,?,?)";
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet == 1, $so_luot_xem, $ngay_nhap, $mo_ta);
     $hinh = substr($hinh, 0, 1406);
 
 }
 function hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta)
 {
-    $sql = "UPDATE products SET name=?, price=?, sale=?, img=?, categoryId=?, special=?, view=?, date=?, describe=? WHERE productId=?";
+    $sql = "UPDATE products SET name=?, price=?, sale=?, img=?, categoryId=?, special=?, view=?, date=?, describ=? WHERE productId=?";
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet == 1, $so_luot_xem, $ngay_nhap, $mo_ta, $ma_hh);
 }
 function hang_hoa_delete($ma_hh)
@@ -72,8 +72,8 @@ function hang_hoa_select_by_loai($ma_loai)
 function hang_hoa_select_keyword($keyword)
 {
     $sql = "SELECT * FROM products hh "
-        . " JOIN loai lo ON lo.categoryId=hh.categoryId "
-        . " WHERE ten_hh LIKE ? OR ten_loai LIKE ?";
+        . " JOIN categories lo ON lo.categoryId=hh.categoryId "
+        . " WHERE name LIKE ? OR name LIKE ?";
     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
 }
 function hang_hoa_select_page($order, $limit)
