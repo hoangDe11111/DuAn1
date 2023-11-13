@@ -2,19 +2,19 @@
 require_once 'pdo.php';
 function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta)
 {
-    $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ma_loai, dac_biet, so_luot_xem, ngay_nhap, mo_ta) VALUES (?,?,?,?,?,?,?,?,?)";
+    $sql = "INSERT INTO products(name, price, sale, img, categoryId, special, view, date, describe) VALUES (?,?,?,?,?,?,?,?,?)";
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet == 1, $so_luot_xem, $ngay_nhap, $mo_ta);
     $hinh = substr($hinh, 0, 1406);
 
 }
 function hang_hoa_update($ma_hh, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta)
 {
-    $sql = "UPDATE hang_hoa SET ten_hh=?, don_gia=?, giam_gia=?, hinh=?, ma_loai=?, dac_biet=?, so_luot_xem=?, ngay_nhap=?, mo_ta=? WHERE ma_hh=?";
+    $sql = "UPDATE products SET name=?, price=?, sale=?, img=?, categoryId=?, special=?, view=?, date=?, describe=? WHERE productId=?";
     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet == 1, $so_luot_xem, $ngay_nhap, $mo_ta, $ma_hh);
 }
 function hang_hoa_delete($ma_hh)
 {
-    $sql = "DELETE FROM hang_hoa WHERE ma_hh=?";
+    $sql = "DELETE FROM products WHERE productId=?";
     if (is_array($ma_hh)) {
         foreach ($ma_hh as $ma) {
             pdo_execute($sql, $ma);
@@ -25,54 +25,54 @@ function hang_hoa_delete($ma_hh)
 }
 function hang_hoa_select_all()
 {
-    $sql = "SELECT * FROM hang_hoa ORDER BY ma_hh desc";
+    $sql = "SELECT * FROM products ORDER BY productId desc";
     return pdo_query($sql);
 }
 function hang_hoa_select_by_id($ma_hh)
 {
-    $sql = "SELECT * FROM hang_hoa WHERE ma_hh=?";
+    $sql = "SELECT * FROM products WHERE productId=?";
     return pdo_query_one($sql, $ma_hh);
 }
 function hang_hoa_exist($ma_hh)
 {
-    $sql = "SELECT count(*) FROM hang_hoa WHERE ma_hh=?";
+    $sql = "SELECT count(*) FROM products WHERE productId=?";
     return pdo_query_value($sql, $ma_hh) > 0;
 }
 function hang_hoa_exist_add($ten_hh)
 {
-    $sql = "SELECT count(*) FROM hang_hoa WHERE ten_hh=?";
+    $sql = "SELECT count(*) FROM products WHERE name=?";
     return pdo_query_value($sql, $ten_hh) > 0;
 }
 function hang_hoa_exist_update($ma_hh, $ten_hh)
 {
-    $sql = "SELECT count(*) FROM hang_hoa WHERE ma_hh!=? and ten_hh=?";
+    $sql = "SELECT count(*) FROM products WHERE productId!=? and name=?";
     return pdo_query_value($sql, $ma_hh, $ten_hh) > 0;
 }
 
 function hang_hoa_tang_so_luot_xem($ma_hh)
 {
-    $sql = "UPDATE hang_hoa SET so_luot_xem = so_luot_xem + 1 WHERE ma_hh=?";
+    $sql = "UPDATE products SET view = view + 1 WHERE productId=?";
     pdo_execute($sql, $ma_hh);
 }
 function hang_hoa_select_top10()
 {
-    $sql = "SELECT * FROM hang_hoa WHERE so_luot_xem > 0 ORDER BY so_luot_xem DESC LIMIT 0, 10";
+    $sql = "SELECT * FROM products WHERE view> 0 ORDER BY view DESC LIMIT 0, 10";
     return pdo_query($sql);
 }
 function hang_hoa_select_dac_biet()
 {
-    $sql = "SELECT * FROM hang_hoa WHERE dac_biet=1";
+    $sql = "SELECT * FROM products WHERE special=1";
     return pdo_query($sql);
 }
 function hang_hoa_select_by_loai($ma_loai)
 {
-    $sql = "SELECT * FROM hang_hoa WHERE ma_loai=?";
+    $sql = "SELECT * FROM products WHERE categoryId=?";
     return pdo_query($sql, $ma_loai);
 }
 function hang_hoa_select_keyword($keyword)
 {
-    $sql = "SELECT * FROM hang_hoa hh "
-        . " JOIN loai lo ON lo.ma_loai=hh.ma_loai "
+    $sql = "SELECT * FROM products hh "
+        . " JOIN loai lo ON lo.categoryId=hh.categoryId "
         . " WHERE ten_hh LIKE ? OR ten_loai LIKE ?";
     return pdo_query($sql, '%' . $keyword . '%', '%' . $keyword . '%');
 }
@@ -84,12 +84,12 @@ function hang_hoa_select_page($order, $limit)
     if (!isset($_SESSION['total_page'])) {
         $_SESSION['total_page'] = 1;
     }
-    $_SESSION['total_pro'] = pdo_query_value("SELECT count(*) FROM hang_hoa");
+    $_SESSION['total_pro'] = pdo_query_value("SELECT count(*) FROM products");
     if (exist_param("page")) {
         $_SESSION['page'] = $_REQUEST['page'];
     }
     $begin = ($_SESSION['page'] - 1) * $limit;
     $_SESSION['total_page'] = ceil($_SESSION['total_pro'] / $limit);
-    $sql = "SELECT * FROM hang_hoa ORDER BY $order DESC LIMIT $begin,$limit";
+    $sql = "SELECT * FROM products ORDER BY $order DESC LIMIT $begin,$limit";
     return pdo_query($sql);
 }

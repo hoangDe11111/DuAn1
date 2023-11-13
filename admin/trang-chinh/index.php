@@ -5,7 +5,7 @@ require "../../dao/loai.php";
 require "../../dao/hang-hoa.php";
 require "../../dao/khach-hang.php";
 require "../../dao/binh-luan.php";
-check_login();
+// check_login();
 
 
 $loai = count(loai_select_all());

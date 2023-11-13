@@ -1,10 +1,10 @@
 <?php
 
-check_login();
+// check_login();
 
 ?>
 <?php
-// require_once '../../global.php';
+require_once '../../global.php';
 // check_login();
 
 

@@ -33,8 +33,8 @@
 
                         foreach ($items as $item) {
                             extract($item);
-                            $suahh = "index.php?btn_edit&ma_hh=" . $ma_hh;
-                            $xoahh = "index.php?btn_delete&ma_hh=" . $ma_hh;
+                            $suahh = "index.php?btn_edit&productId=" . $ma_hh;
+                            $xoahh = "index.php?btn_delete&productId=" . $ma_hh;
                             $img_path = $UPLOAD_URL . '/products/' . $hinh;
                             if (is_file($img_path)) {
                                 $img = "<img src='$img_path' height='60' width='60' class='object-fit-contain'>";
@@ -47,7 +47,7 @@
                             }
                         ?>
                         <tr>
-                            <td><input type="checkbox" name="ma_hh[]" value="<?= $ma_hh ?>"></td>
+                            <td><input type="checkbox" name="productId[]" value="<?= $ma_hh ?>"></td>
                             <td><?= $ma_hh ?></td>
                             <td><?= $ten_hh ?></td>
                             <td><?= $img ?></td>

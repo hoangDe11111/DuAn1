@@ -1,3 +1,3 @@
 <?php 
 
-header('Location: trang-chinh/');
+header('Location: trang-chinh');

@@ -22,12 +22,12 @@
 
                         foreach ($items as $item) {
                             extract($item);
-                            $suadm = "index.php?btn_edit&ma_loai=" . $ma_loai;
-                            $xoadm = "index.php?btn_delete&ma_loai=" . $ma_loai;
+                            $suadm = "index.php?btn_edit&categoryId=" . $ma_loai;
+                            $xoadm = "index.php?btn_delete&categoryId=" . $ma_loai;
 
                         ?>
                         <tr>
-                            <td><input type="checkbox" name="ma_loai[]" value="<?= $ma_loai ?>"></td>
+                            <td><input type="checkbox" name="categoryId[]" value="<?= $ma_loai ?>"></td>
                             <td><?= $ma_loai ?></td>
                             <td><?= $ten_loai ?></td>
                             <td class="text-end">

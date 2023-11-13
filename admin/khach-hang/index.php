@@ -2,7 +2,7 @@
 require_once "../../dao/pdo.php";
 require_once "../../dao/khach-hang.php";
 require "../../global.php";
-check_login();
+// check_login();
 
 extract($_REQUEST);
 if (exist_param("btn_list")) {

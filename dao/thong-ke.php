@@ -3,25 +3,25 @@
 require_once 'pdo.php';
 function thong_ke_hang_hoa()
 {
-    $sql = "SELECT lo.ma_loai, lo.ten_loai,"
+    $sql = "SELECT lo.categoryId, lo.name,"
         . " COUNT(*) so_luong,"
-        . " MIN(hh.don_gia) gia_min,"
-        . " MAX(hh.don_gia) gia_max,"
-        . " AVG(hh.don_gia) gia_avg"
+        . " MIN(hh.price) gia_min,"
+        . " MAX(hh.price) gia_max,"
+        . " AVG(hh.price) gia_avg"
         . " FROM hang_hoa hh "
-        . " JOIN loai lo ON lo.ma_loai=hh.ma_loai "
-        . " GROUP BY lo.ma_loai, lo.ten_loai";
+        . " JOIN loai lo ON lo.categoryId=hh.categoryIdi "
+        . " GROUP BY lo.categoryId, lo.name";
     return pdo_query($sql);
 }
 function thong_ke_binh_luan()
 {
-    $sql = "SELECT hh.ma_hh, hh.ten_hh,"
+    $sql = "SELECT hh.productId, hh.name,"
         . " COUNT(*) so_luong,"
-        . " MIN(bl.ngay_bl) cu_nhat,"
-        . " MAX(bl.ngay_bl) moi_nhat"
+        . " MIN(bl.dateCmt) cu_nhat,"
+        . " MAX(bl.dateCmt) moi_nhat"
         . " FROM binh_luan bl "
-        . " JOIN hang_hoa hh ON hh.ma_hh=bl.ma_hh "
-        . " GROUP BY hh.ma_hh, hh.ten_hh"
+        . " JOIN products hh ON hh.productId=bl.productIdma_hh "
+        . " GROUP BY hh.productId, hh.name"
         . " HAVING so_luong > 0";
     return pdo_query($sql);
 }

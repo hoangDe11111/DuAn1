@@ -4,7 +4,7 @@ require_once "../../dao/loai.php";
 require_once "../../dao/hang-hoa.php";
 require "../../global.php";
 
-check_login();
+// check_login();
 
 // chech_login();
 
@@ -12,14 +12,14 @@ extract($_REQUEST);
 if (exist_param("btn_list")) {
 
     //show dữ liệu
-    $items = hang_hoa_select_page('ma_hh', 10);
+    $items = hang_hoa_select_page('productId', 10);
     $VIEW_NAME = "list.php";
 } else if (exist_param("btn_insert")) {
     #lấy dữ liệu từ form
     $ten_hh = $_POST['ten_hh'];
     $don_gia = $_POST['don_gia'];
     $giam_gia = $_POST['giam_gia'];
-    $ma_loai = $_POST['ma_loai'];
+    $ma_loai = $_POST['categoryId'];
     $dac_biet = $_POST['dac_biet'];
     $so_luot_xem = $_POST['so_luot_xem'];
     $mo_ta = $_POST['mo_ta'];
@@ -67,7 +67,7 @@ if (exist_param("btn_list")) {
     $ten_hh = $_POST['ten_hh'];
     $don_gia = $_POST['don_gia'];
     $giam_gia = $_POST['giam_gia'];
-    $ma_loai = $_POST['ma_loai'];
+    $ma_loai = $_POST['categoryId'];
     $dac_biet = $_POST['dac_biet'];
     $so_luot_xem = $_POST['so_luot_xem'];
     $mo_ta = $_POST['mo_ta'];

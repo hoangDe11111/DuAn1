@@ -16,13 +16,13 @@ if (is_file($img_path)) {
                 <form action="index.php?btn_update" method="POST" enctype="multipart/form-data" id="update_hang_hoa">
                     <div class="row">
                         <div class="form-group col-sm-4">
-                            <label for="ma_loai" class="form-label">Loại hàng</label>
-                            <select name="ma_loai" class="form-control" id="ma_loai">
+                            <label for="categoryId" class="form-label">Loại hàng</label>
+                            <select name="categoryId" class="form-control" id="categoryId">
                                 <?php
 
                                 foreach ($loai_hang as $loai_hang) {
                                     extract($loai_hang);
-                                    if ($ma_loai == $hang_hoa_info['ma_loai']) {
+                                    if ($ma_loai == $hang_hoa_info['categoryId']) {
                                         $s = "selected";
                                     } else {
                                         $s = "";
