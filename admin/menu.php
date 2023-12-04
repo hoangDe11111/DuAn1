@@ -6,7 +6,7 @@
     </div>
     <ul class="list-unstyled components text-secondary">
         <li>
-            <a href="<?= $SITE_URL ?>/trang-chinh/"><i class="fas fa-store"></i>Xem trang web</a>
+            <a href="index.php"><i class="fas fa-store"></i>Xem trang web</a>
         </li>
         <li>
             <a href="<?= $ADMIN_URL ?>/trang-chinh/"><i class="fas fa-home"></i>Trang chủ</a>

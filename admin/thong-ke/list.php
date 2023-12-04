@@ -23,7 +23,7 @@
 
                     ?>
                     <tr>
-                        <td><?= $ten_loai ?></td>
+                        <td><?=  $item['name'] ?></td>
                         <td><?= $so_luong ?></td>
                         <td><?= number_format($gia_min, 0) ?>VND</td>
                         <td><?= number_format($gia_max, 0) ?>VND</td>
