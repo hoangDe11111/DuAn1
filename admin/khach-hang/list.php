@@ -12,9 +12,12 @@
                         <tr>
                             <th><input type="checkbox" id="select-all"></th>
                             <th>Mã KH</th>
+                            <th>Tài khoản</th>
                             <th>Họ và tên</th>
                             <th>Địa chỉ email</th>
                             <th>Ảnh</th>
+                            <th>Phone</th>
+                            <th>Địa chỉ</th>
                             <th>Vai trò</th>
                             <th>Kích hoạt</th>
                             <th><a href="index.php" class="btn btn-success text-white">Thêm mới
@@ -26,9 +29,9 @@
 
                         foreach ($items as $item) {
                             extract($item);
-                            $suakh = "index.php?btn_edit&ma_kh=" . $ma_kh;
-                            $xoakh = "index.php?btn_delete&ma_kh=" . $ma_kh;
-                            $img_path = $UPLOAD_URL . '/users/' . $hinh;
+                            $suakh = "index.php?btn_edit&userId=" . $item['userId'];
+                            $xoakh = "index.php?btn_delete&userId=" . $item['userId'];
+                            $img_path = $UPLOAD_URL . '/users/' . $item['img'];
                             if (is_file($img_path)) {
                                 $img = "<img src='$img_path' height='50' width='50' class='rounded-circle object-fit-cover'>";
                             } else {
@@ -37,13 +40,16 @@
 
                         ?>
                         <tr>
-                            <td><input type="checkbox" name="ma_kh[]" value="<?= $ma_kh ?>"></td>
-                            <td><?= $ma_kh ?></td>
-                            <td><?= $ho_ten ?></td>
-                            <td><?= $email ?></td>
+                            <td><input type="checkbox" name="userId[]" value="<?= $ma_kh ?>"></td>
+                            <td><?= $item['userId'] ?></td>
+                            <td><?= $item['username'] ?></td>
+                            <td><?= $item['fullName'] ?></td>
+                            <td><?= $item['email'] ?></td>
                             <td><?= $img ?></td>
-                            <td><?= ($vai_tro == 1) ? "Nhân viên" : "Khách hàng"; ?></td>
-                            <td><?= ($kich_hoat == 1) ? "Rồi" : "Chưa"; ?></td>
+                            <td><?= $item['phone'] ?></td>
+                            <td><?= $item['address'] ?></td>
+                            <td><?= ($item['role'] == 1) ? "Nhân viên" : "Khách hàng"; ?></td>
+                            <td><?= ($item['status'] == 1) ? "Rồi" : "Chưa"; ?></td>
                             <td class="text-end">
                                 <a href="<?= $suakh ?>" class="btn btn-outline-info btn-rounded"><i
                                         class="fas fa-pen"></i></a>

@@ -33,31 +33,31 @@
 
                         foreach ($items as $item) {
                             extract($item);
-                            $suahh = "index.php?btn_edit&ma_hh=" . $ma_hh;
-                            $xoahh = "index.php?btn_delete&ma_hh=" . $ma_hh;
-                            $img_path = $UPLOAD_URL . '/products/' . $hinh;
+                            $suahh = "index.php?btn_edit&productId=" . $item['productId'] ;
+                            $xoahh = "index.php?btn_delete&productId=" . $item['productId'] ;
+                            $img_path = $UPLOAD_URL . '/products/' . $item['img'];
                             if (is_file($img_path)) {
                                 $img = "<img src='$img_path' height='60' width='60' class='object-fit-contain'>";
                             } else {
                                 $img = "no photo";
                             }
                             //Tính giảm bn %
-                            if ($don_gia > 0) {
-                                $percent_discount = number_format($giam_gia / $don_gia * 100);
+                            if ($item['price'] > 0) {
+                                $percent_discount = number_format($item['sale'] / $item['price'] * 100);
                             }
                         ?>
                         <tr>
-                            <td><input type="checkbox" name="ma_hh[]" value="<?= $ma_hh ?>"></td>
-                            <td><?= $ma_hh ?></td>
-                            <td><?= $ten_hh ?></td>
-                            <td><?= $img ?></td>
-                            <td><?= number_format($don_gia, 0) ?>đ</td>
-                            <td><?= number_format($giam_gia, 0) ?>đ<i
+                            <td><input type="checkbox" name="productId" value="<?= $item['productId'] ?>"></td>
+                            <td><?= $item['productId'] ?></td>
+                            <td><?= $item['name'] ?></td>
+                            <td><?= $item['img'] ?></td>
+                            <td><?= number_format($item['price'], 0) ?>đ</td>
+                            <td><?= number_format($item['sale'], 0) ?>đ<i
                                     class="text-danger">(<?= isset($percent_discount) ? $percent_discount : '' ?>%)</i>
                             </td>
-                            <td><?= $so_luot_xem ?></td>
-                            <td><?= $ngay_nhap ?></td>
-                            <td><?= ($dac_biet == 1) ? "Đặc biệt" : "Không"; ?></td>
+                            <td><?= $item['view'] ?></td>
+                            <td><?= $item['date'] ?></td>
+                            <td><?= ($item['special'] == 1) ? "Đặc biệt" : "Không"; ?></td>
 
                             <td class="text-end">
                                 <a href="<?= $suahh ?>" class="btn btn-outline-info btn-rounded"><i
